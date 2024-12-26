@@ -14,11 +14,17 @@ const Navbar = () => {
         setInput("")
     }
     return (
-        <div className='bg-gray-200 pt-4 px-4 md:px-0'>
+        <div className='bg-gray-200 py-4 px-4'>
             <div className="container mx-auto flex justify-between items-center">
                 <Link href="/">
                     <div className="text-[30px] font-medium">Logo</div>
                 </Link>
+                <form onSubmit={searchMovie}>
+                    <div className="space-x-4">
+                        <input type="text" className="bg-gray-300 px-4 py-2 outline-none" placeholder='Search a Movie' value={input} onChange={(event) => setInput(event.target.value)} />
+                        <button className="bg-blue-500 py-2 px-4 hover:text-white hover:bg-blue-800">Search</button>
+                    </div>
+                </form>
             </div>
         </div>
     )
