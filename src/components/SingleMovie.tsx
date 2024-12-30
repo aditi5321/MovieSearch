@@ -4,7 +4,7 @@ import axios from "axios";
 import { IMovie } from "./HomePage"; // Import IMovie from HomePage
 import { IoMdClose } from "react-icons/io";
 import { BsPlayFill } from "react-icons/bs";
-import Loading from "./Loading";
+// import Loading from "./Loading";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import dynamic from "next/dynamic";
@@ -66,7 +66,7 @@ const SingleMovie = () => {
 
   return (
     <div className="bg-gray-100 relative px-4">
-      {state.isLoading && <Loading />}
+      {/* {state.isLoading && <Loading />} */}
       {/* Show loading component until the movie data is loaded */}
       {state.movie && (
         <div className="container mx-auto min-h-[calc(100vh-77px)] flex items-center relative">
@@ -87,7 +87,7 @@ const SingleMovie = () => {
                 priority
               />
             </div>
-            {state.isImageLoading && <Loading />}
+            {/* {state.isImageLoading && <Loading />} */}
             <div className="space-y-6">
               <div className="uppercase -translate-y-3 text-[26px] md:text-[34px] font-medium pr-4">
                 {state.movie?.title}

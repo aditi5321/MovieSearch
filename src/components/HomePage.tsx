@@ -120,7 +120,7 @@ const HomePage = () => {
   return state.isLoading ? (
     <Loading />
   ) : (
-    <div className="bg-gray-100 relative  px-4">
+    <div className="bg-gray-100 relative px-4">
       <div className="container mx-auto min-h-[calc(100vh-77px)] relative">
         <div className="flex flex-wrap gap-15 lg:mx-10 py-20">
           {state.movies.map((movie) => (
@@ -129,12 +129,12 @@ const HomePage = () => {
               className="flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/5 "
             >
               <Link href={`/SingleMovies?id=${movie.id}`}>
-                <div className=" relative flex flex-col items-center">
+                <div className="h-auto relative flex flex-col items-center group  pb-10">
                   <Image
                     src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
                     width={1000}
                     height={1000}
-                    className="w-[200px] object-cover"
+                    className="w-[200px] object-cover hover:scale-110 hover:backdrop-blur-md transition-all ease-linear duration-200 rounded-lg "
                     alt="movie poster"
                     onLoadingComplete={() =>
                       setState((prevState) => ({
@@ -144,10 +144,12 @@ const HomePage = () => {
                     }
                     priority
                   />
-                  {state.isImageLoading && <Loading />}
-                  <div className="uppercase -translate-y-3 text-[26px] md:text-[20px] font-medium pt-5 text-center">
+                  <p className="fixed overflow-hidden flex items-center justify-center text-center text-white font-medium text opacity-0 group-hover:opacity-100 group-hover:bg-red-500 group-hover:bg-opacity-50 transition-all duration-300 ease-in-out p-2">
                     {movie?.title}
-                  </div>
+                  </p>
+                  {/* <div className="absolute inset-0 flex items-center justify-center text-center text-white font-medium text-[20px] opacity-0 group-hover:opacity-100 group-hover:bg-black group-hover:bg-opacity-50 transition-all duration-300 ease-in-out p-2">
+                    {movie?.title}
+                  </div> */}
                 </div>
               </Link>
             </div>
