@@ -9,6 +9,8 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import dynamic from "next/dynamic";
 import Genres from "./Genres";
+import Link from "next/link";
+import { Button } from "./ui/button";
 
 const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
 
@@ -48,7 +50,7 @@ const SingleMovie = () => {
           movie: res.data,
           isLoading: false,
         }));
-      })
+      });
   }, [id]); // Dependency on 'id' to trigger the effect when the ID changes
 
   useEffect(() => {
@@ -65,11 +67,20 @@ const SingleMovie = () => {
   }, [state.movie]);
 
   return (
-    <div className="bg-gray-100 relative px-4">
+    <div
+      className="w-full h-screen"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("https://image.tmdb.org/t/p/w500/${state.movie?.backdrop_path})`,
+        // backgroundColor: "",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      }}
+    >
       {/* {state.isLoading && <Loading />} */}
       {/* Show loading component until the movie data is loaded */}
       {state.movie && (
-        <div className="container mx-auto min-h-[calc(100vh-77px)] flex items-center relative">
+        <div className="z-9999 container mx-auto min-h-[calc(100vh-77px)] flex items-center relative">
           <div className="flex-col lg:flex-row flex gap-10 lg-mx-10 py-20">
             <div className="mx-auto flex-none relative">
               <Image
@@ -88,19 +99,18 @@ const SingleMovie = () => {
               />
             </div>
             {/* {state.isImageLoading && <Loading />} */}
-            <div className="space-y-6">
+            <div className="space-y-6 text-white">
               <div className="uppercase -translate-y-3 text-[26px] md:text-[34px] font-medium pr-4">
                 {state.movie?.title}
               </div>
               <div className="flex gap-4 flex-wrap">
                 {state.movie?.genres?.map((genre, index) => (
-                    <Genres
+                  <Genres
                     key={genre?.id}
                     index={index}
                     length={state.movie?.genres?.length}
                     name={genre?.name}
-
-                    />
+                  />
                 ))}
               </div>
               <div className="flex flex-col md:flex-row gap-2 md:gap-6">
@@ -124,9 +134,12 @@ const SingleMovie = () => {
                   }))
                 }
               >
-                <div className="flex gap-2 items-center px-4 py-2 mb-6 bg-blue-100 hover:bg-blue-400 rounded">
-                  <BsPlayFill size={24} />
-                  Watch Trailer
+                <div className="flex">
+                  <div className="flex gap-2 items-center px-4 py-2 mb-6 bg-blue-100 hover:bg-blue-400 rounded text-black mr-2">
+                    <BsPlayFill size={24} />
+                    Watch Trailer
+                  </div>
+                  <Button><Link href="/">Back</Link></Button>
                 </div>
               </div>
             </div>

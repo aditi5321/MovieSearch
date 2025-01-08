@@ -86,3 +86,10 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* .complexBackground {
+  background-image: url('https://image.tmdb.org/t/p/w500/${state.movie.poster_path}');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
