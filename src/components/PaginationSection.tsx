@@ -63,8 +63,8 @@ const PaginationSection = ({
           {generatePageNumber().map((page) => (
             <PaginationItem
               key={page}
-              className={`px-4 py-2 mx-2 bg-blue-500 text-white rounded-md ${
-                currentPage === page ? "bg-blue-700" : "bg-blue-500"
+              className={`px-4 py-2 mx-2  rounded-md ${
+                currentPage === page ? "" : ""
               }`}
             >
               <PaginationLink onClick={() => setCurrentPage(page)}>
