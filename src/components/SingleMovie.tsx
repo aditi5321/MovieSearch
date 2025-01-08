@@ -135,11 +135,13 @@ const SingleMovie = () => {
                 }
               >
                 <div className="flex">
-                  <div className="flex gap-2 items-center px-4 py-2 mb-6 bg-blue-100 hover:bg-blue-400 rounded text-black mr-2">
+                  <Button className="flex gap-2 items-center px-4 py-2 mb-6 bg-blue-100 hover:bg-blue-400 rounded text-black mr-2">
                     <BsPlayFill size={24} />
                     Watch Trailer
-                  </div>
-                  <Button><Link href="/">Back</Link></Button>
+                  </Button>
+                  <Button className="bg-blue-100 hover:bg-blue-400 px-4 py-2 text-black">
+                    <Link href="/">Back</Link>
+                  </Button>
                 </div>
               </div>
             </div>

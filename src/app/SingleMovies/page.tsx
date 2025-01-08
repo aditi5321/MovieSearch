@@ -9,4 +9,4 @@ const SingleMovies = () => {
   )
 }
 
-export default SingleMovie
+export default SingleMovies
